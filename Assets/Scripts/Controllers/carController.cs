@@ -17,7 +17,14 @@ public class carController : MonoBehaviour
 
     public float maxSteerAngle = 30;
     public float motor = 50;
+    public float brakePower = 2;
 
+    private Rigidbody rb;
+
+    public void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     public void GetInput()
     {
@@ -57,11 +64,21 @@ public class carController : MonoBehaviour
         _transform.rotation = _quat;
     }
 
+    private void Brake()
+    {
+        Debug.Log("vELOCİTY: " + GetComponent<Rigidbody>().velocity);
+        if (Input.GetAxis("Jump") > 0)
+        {
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, brakePower * Time.deltaTime);
+        }
+    }
+
     private void FixedUpdate()
     {
         GetInput();
         Steer();
         Accelerate();
+        Brake();
         UpdateWheelPoses();
     }
 
