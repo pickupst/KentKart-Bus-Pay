@@ -66,7 +66,7 @@ public class carController : MonoBehaviour
 
     private void Brake()
     {
-        Debug.Log("vELOCİTY: " + GetComponent<Rigidbody>().velocity);
+        //Debug.Log("vELOCİTY: " + GetComponent<Rigidbody>().velocity);
         if (Input.GetAxis("Jump") > 0)
         {
             rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, brakePower * Time.deltaTime);
