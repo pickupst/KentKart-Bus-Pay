@@ -4315,7 +4315,7 @@ MonoBehaviour:
   rearTransformR: {fileID: 7016852451836098061}
   maxSteerAngle: 30
   motor: 200
-  brakePower: 2
+  brakePower: 150000
 --- !u!1 &7961382631918923845
 GameObject:
   m_ObjectHideFlags: 0
