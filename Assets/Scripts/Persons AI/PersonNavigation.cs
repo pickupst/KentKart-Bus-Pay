@@ -10,7 +10,7 @@ public class PersonNavigation : MonoBehaviour
     private NavMeshAgent navAgent;
 
     public float patrolRadius = 10f;
-    private float patrol_timer = 10f;
+    public float patrol_timer = 10f;
     private float timerCount;
 
     private void Awake()
@@ -30,10 +30,10 @@ public class PersonNavigation : MonoBehaviour
         Patrol();
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, patrolRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+        //Gizmos.DrawWireSphere(transform.position, patrolRadius);
+    //}
 
     void Patrol()
     {

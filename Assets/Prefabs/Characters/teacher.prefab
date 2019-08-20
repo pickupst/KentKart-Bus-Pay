@@ -89,7 +89,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437856825956347255}
   m_LocalRotation: {x: -0.6986298, y: -0.10916255, z: -0.10916254, w: 0.69862974}
-  m_LocalPosition: {x: -0, y: 1.6999999, z: 0}
+  m_LocalPosition: {x: 0, y: 0.044499867, z: 0}
   m_LocalScale: {x: 3.9316359, y: 5.8044543, z: 3.7897005}
   m_Children:
   - {fileID: 813354322817948729}
@@ -259,7 +259,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 247136020756978330}
-  - component: {fileID: 7918457512581986272}
+  - component: {fileID: 2849654224757806939}
+  - component: {fileID: 4988124596258445009}
   m_Layer: 0
   m_Name: teacher
   m_TagString: Untagged
@@ -276,32 +277,49 @@ Transform:
   m_GameObject: {fileID: 3834068781269428361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 8007209141431945774}
   - {fileID: 4827335793659106153}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &7918457512581986272
-Animator:
-  serializedVersion: 3
+--- !u!195 &2849654224757806939
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3834068781269428361}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: aade3653fc827b84ebcf4b12033afc58, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.04
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.15
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &4988124596258445009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834068781269428361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c9a42498b28404c800bb53306ae2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolRadius: 10
+  patrol_timer: 10
 --- !u!1 &4062394058033825932
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7652711035347894568}
   m_LocalRotation: {x: -0.69862986, y: -0.10916254, z: -0.109162554, w: 0.69862974}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.6555, z: 0}
   m_LocalScale: {x: 0.82733583, y: 1.2214336, z: 0.7974683}
   m_Children: []
   m_Father: {fileID: 247136020756978330}
