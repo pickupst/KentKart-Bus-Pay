@@ -32,20 +32,29 @@ public class carEngine : MonoBehaviour
 
                 if (Vector3.Distance(transform.position, pathTransform[i].position) < 10f)
                 {
+
                     currentNode = i;
+                    if (currentNode >= pathTransform.Length - 1)
+                    {
+                        currentNode = 0;
+                    }
+
                 }
             }
         }
+        Debug.Log("CurrentNode = " + currentNode + " position " + transform.position + " length " + pathTransform.Length);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Debug.Log("Nodes Count : " + nodes.Count);
+
         ApplySteer();
         Drive();
         CheckWayPointDistance();
         Slower();
-        Debug.Log("Velocity : " + rb.velocity);
+        //Debug.Log("Velocity : " + rb.velocity);
     }
 
     private void ApplySteer()
@@ -68,7 +77,7 @@ public class carEngine : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, nodes[currentNode].position) < 5f)
         {
-            if (currentNode == nodes.Count - 1)
+            if (currentNode >= nodes.Count - 1)
             {
                 currentNode = 0;
             }

@@ -32,7 +32,7 @@ public class trafficCreater : MonoBehaviour
             }
             else
             {
-                Instantiate(cars[Random.Range(0, cars.Length)], nodes[randPathCount].position, Quaternion.FromToRotation(nodes[randPathCount].position, nodes[0].position));
+                Instantiate(cars[Random.Range(0, cars.Length)], nodes[randPathCount].position, Quaternion.identity);
             }
             nodes.RemoveAt(randPathCount);
         }
