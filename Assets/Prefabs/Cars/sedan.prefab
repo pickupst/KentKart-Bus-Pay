@@ -4633,6 +4633,10 @@ MonoBehaviour:
   path: {fileID: 3215048314798636238, guid: b7b11db4de4810f4ca56bd9885806282, type: 3}
   wheelFL: {fileID: 2116452025608833165}
   wheelFR: {fileID: 286787247783109815}
+  sensorLength: 10
+  frontSensorPosition: {x: 0, y: 0.2, z: 0.5}
+  frontSideSensorPosition: 0.2
+  frontSensorAngle: 10
 --- !u!1 &9085460785370518926
 GameObject:
   m_ObjectHideFlags: 0

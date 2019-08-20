@@ -15,10 +15,18 @@ public class carEngine : MonoBehaviour
     public WheelCollider wheelFL;
     public WheelCollider wheelFR;
 
+    [Header("Sensors")]
+    public float sensorLength = 10f;
+    public Vector3 frontSensorPosition = new Vector3(0f, 0.2f, 0.5f);
+    public float frontSideSensorPosition = 0.2f;
+    public float frontSensorAngle = 30f;
+
     private Rigidbody rb;
 
     private List<Transform> nodes;
     private int currentNode = 0;
+
+    private bool isSensorActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +61,7 @@ public class carEngine : MonoBehaviour
     void FixedUpdate()
     {
         //Debug.Log("Nodes Count : " + nodes.Count);
-
+        Sensors();
         ApplySteer();
         Drive();
         CheckWayPointDistance();
@@ -103,7 +111,7 @@ public class carEngine : MonoBehaviour
         //Debug.Log("CurrentNode : " + currentNode + " position " + nodes[currentNode].position);
     }
 
-    private void Slower() //hız sabitleme
+    /* private void Slower() //hız sabitleme
     {
 
         if (rb.velocity.x > maxSpeed || rb.velocity.x < -maxSpeed) //eğer hız aşarsa
@@ -116,5 +124,86 @@ public class carEngine : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, maxSpeed * (rb.velocity.z / Mathf.Abs(rb.velocity.z)));
         }
+    }*/
+    
+    private void Sensors()
+    {
+
+        isSensorActive = false;
+
+        RaycastHit hit;
+        Vector3 sensorStartPos = transform.position + frontSensorPosition;
+
+        //ön orta sensör
+        if (Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorStartPos, hit.point);
+            isSensorActive = true;
+
+
+        }
+        
+
+        //ön sağ sensör
+        sensorStartPos.z += frontSideSensorPosition;
+        if (Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorStartPos, hit.point);
+            isSensorActive = true;
+        }
+        
+
+        //ön sağ açılı sensör
+        
+        if (Physics.Raycast(sensorStartPos, Quaternion.AngleAxis(frontSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorStartPos, hit.point);
+            isSensorActive = true;
+        }
+        
+
+        //ön sol sensör
+        sensorStartPos.z -= 2 * frontSideSensorPosition;
+        if (Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorStartPos, hit.point);
+            isSensorActive = true;
+        }
+        
+
+        //ön sol açılı sensör
+
+        if (Physics.Raycast(sensorStartPos, Quaternion.AngleAxis(-frontSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorStartPos, hit.point);
+            isSensorActive = true;
+        }
+
+        if (isSensorActive)
+        {
+            Brake();
+        }
+        else
+        {
+            NonBrake();
+        }
+    }
+
+    private void Brake()
+    {
+        wheelFL.motorTorque = 0;
+        wheelFR.motorTorque = 0;
+
+        wheelFL.brakeTorque = maxMotorTorque * 10;
+        wheelFR.brakeTorque = maxMotorTorque * 10;
+    }
+
+    private void NonBrake()
+    {
+        wheelFL.motorTorque = maxMotorTorque;
+        wheelFR.motorTorque = maxMotorTorque;
+
+        wheelFL.brakeTorque = 0;
+        wheelFR.brakeTorque = 0;
     }
 }
