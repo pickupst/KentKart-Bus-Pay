@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class carEngine : MonoBehaviour
 {
-    public float maxSpeed = 7;
-    public float maxSteerAngle = 40f;
-    public float motor = 50f;
+
+    public float maxMotorTorque = 200f;
+    public float maxSteerAngle = 90f;
+
+    public float currentSpeed;
+    public float maxSpeed = 150f;
+
     public Transform path;
     public WheelCollider wheelFL;
     public WheelCollider wheelFR;
@@ -53,7 +57,7 @@ public class carEngine : MonoBehaviour
         ApplySteer();
         Drive();
         CheckWayPointDistance();
-        Slower();
+        //Slower();
         //Debug.Log("Velocity : " + rb.velocity);
     }
 
@@ -69,8 +73,18 @@ public class carEngine : MonoBehaviour
 
     private void Drive()
     {
-        wheelFL.motorTorque = motor;
-        wheelFR.motorTorque = motor;
+        currentSpeed = 2 * Mathf.PI * wheelFL.radius * wheelFL.rpm * 60 / 100;
+        if (currentSpeed < maxSpeed)
+        {
+            wheelFL.motorTorque = maxMotorTorque;
+            wheelFR.motorTorque = maxMotorTorque;
+        }
+        else
+        {
+            wheelFL.motorTorque = 0;
+            wheelFR.motorTorque = 0;
+        }
+        
     }
 
     private void CheckWayPointDistance()
