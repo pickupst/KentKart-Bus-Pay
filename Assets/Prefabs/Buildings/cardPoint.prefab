@@ -13,7 +13,7 @@ GameObject:
   m_Name: cardPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4229982028776082038
@@ -45,10 +45,10 @@ GameObject:
   - component: {fileID: 8204675471679141393}
   m_Layer: 0
   m_Name: Cube 2 (7)
-  m_TagString: Untagged
+  m_TagString: cardPoint
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6099843530200346631
 Transform:

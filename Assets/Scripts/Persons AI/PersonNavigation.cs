@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class PersonNavigation : MonoBehaviour
 {
-
     private NavMeshAgent navAgent;
 
     public float patrolRadius = 10f;
@@ -15,6 +14,7 @@ public class PersonNavigation : MonoBehaviour
 
     private void Awake()
     {
+        patrol_timer = Random.Range(patrol_timer - patrol_timer / 2, patrol_timer);
         navAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -49,7 +49,18 @@ public class PersonNavigation : MonoBehaviour
 
     void SetNewRandomDestination()
     {
-        Vector3 newDestination = RandomNavSphere(transform.position, patrolRadius, -1);
+        Vector3 newDestination = Vector3.zero;
+        //Debug.Log("GetComponent<Person>().getIsGotoBusStation() : " + GetComponent<Person>().getIsGotoBusStation());
+        if (GetComponent<Person>().getIsGotoBusStation())
+        {
+            //Debug.Log("GetComponent<Person>().getBusPoint(); : " + GetComponent<Person>().getBusPoint());
+            newDestination = GetComponent<Person>().getBusPoint();
+        }
+        else
+        {
+            newDestination = RandomNavSphere(transform.position, patrolRadius, -1);
+        }
+
         navAgent.SetDestination(newDestination);
     }
 

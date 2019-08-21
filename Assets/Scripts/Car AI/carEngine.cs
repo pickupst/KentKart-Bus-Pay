@@ -179,7 +179,7 @@ public class carEngine : MonoBehaviour
             isSensorActive = true;
         }
 
-        if (isSensorActive)
+        if (isSensorActive && hit.collider != null &&(hit.collider.gameObject.tag == "car" || hit.collider.gameObject.tag == "Player"))
         {
             Brake();
         }
