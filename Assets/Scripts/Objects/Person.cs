@@ -1,12 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Person : MonoBehaviour
 {
-    bool isEmptyCard = false;
-    bool isGotoBusStation = false;
+    public float fillTime = 5f; //5 saniye doldurmayı bekler
+
+    public bool isEmptyCard = true; //her insanın kentkartı başta boş
+    public bool isGotoBusStation = false;
+    public bool isGotoCardStation = false;
+
     private Vector3 busPoint;
+    private Vector3 cardStationPoint;
+
+    public float maxBusDistance = 7f;
+
+    private void Awake()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -17,19 +30,12 @@ public class Person : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("isEmptyCard: " + isEmptyCard + " isGotoBusStation: " + isGotoBusStation);
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        //Debug.Log("OnTriggerStay " + isGotoBusStation);
-        if (other.tag == "busStation" )
-        {
-            busPoint = other.transform.position;
-            isGotoBusStation = true;
-            Debug.Log("OnTriggerEnter " + isGotoBusStation);
-        }
+
     }
 
     public Vector3 getBusPoint()
@@ -37,24 +43,66 @@ public class Person : MonoBehaviour
         return busPoint;
     }
 
+    public Vector3 getCardStationPoint()
+    {
+        return cardStationPoint;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         //Destroy(other.gameObject);
         //Debug.Log("OnTriggerStay " + isGotoBusStation);
-        if (other.tag == "busStation" )
+        if (other.tag == "cardPoint" && isEmptyCard == true)
+        {
+            cardStationPoint = other.transform.position;
+            Debug.Log(other.transform.position);
+            isGotoCardStation = true;
+            if (Vector3.Distance(other.transform.position, transform.position) < 3f)
+            {
+                Debug.Log("KART DOLUYOR");
+                StartCoroutine(FillCard());
+                isGotoCardStation = false;
+            }
+
+        }
+        else if (other.tag == "busStation" && isGotoBusStation == false && isEmptyCard == false)
         {
             busPoint = other.transform.position;
             isGotoBusStation = true;
 
             
         }
+        else if (other.tag == "Player" && isGotoBusStation == true)
+        {
+            Debug.Log("Vector3.Distance(other.transform.position, transform.position): " + Vector3.Distance(other.transform.position, transform.position) );
+            if (other.GetComponent<Rigidbody>().velocity == Vector3.zero && Vector3.Distance(other.transform.position, transform.position) < maxBusDistance)
+            {
+                //otobüs geldi ve otobüse biniyor!!!
+                isEmptyCard = true;
+                isGotoBusStation = false;
+                gameObject.SetActive(false);
+            }
+        }
+    }
+
+    IEnumerator FillCard()
+    {
+        isEmptyCard = false;
+        yield return new WaitForSeconds(fillTime); // card doldurma süresi
     }
 
     public bool getIsGotoBusStation ()
     {
-        Debug.Log("GetComponent<Person>().getBusPoint(); : " + busPoint);
+        //Debug.Log("GetComponent<Person>().getBusPoint(); : " + busPoint);
 
         return isGotoBusStation;
+    }
+
+    public bool getIsGotoCardStation()
+    {
+        //Debug.Log("GetComponent<Person>().getBusPoint(); : " + busPoint);
+
+        return isGotoCardStation;
     }
 
 }

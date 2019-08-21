@@ -43,9 +43,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78209afcaf8a47046bae48f6b98878e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitsPos: []
+  limitsPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   persons:
   - {fileID: 8229807309441052675, guid: 154d39554ce1b4b4ebf3f5471ef681ab, type: 3}
   - {fileID: 4625458007751153078, guid: 098393ca40c2c294e94e2b5b08beaeb3, type: 3}
   - {fileID: 3834068781269428361, guid: 0cfb50d204cdc304b8f554ecc3d42664, type: 3}
-  personsCount: 5
+  personsCount: 30

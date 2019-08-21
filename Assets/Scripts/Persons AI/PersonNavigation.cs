@@ -12,6 +12,11 @@ public class PersonNavigation : MonoBehaviour
     public float patrol_timer = 10f;
     private float timerCount;
 
+    public NavMeshAgent getNavAgent()
+    {
+        return navAgent;
+    }
+
     private void Awake()
     {
         patrol_timer = Random.Range(patrol_timer - patrol_timer / 2, patrol_timer);
@@ -27,6 +32,7 @@ public class PersonNavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(" isstoped" + navAgent.isStopped);
         Patrol();
     }
 
@@ -55,6 +61,11 @@ public class PersonNavigation : MonoBehaviour
         {
             //Debug.Log("GetComponent<Person>().getBusPoint(); : " + GetComponent<Person>().getBusPoint());
             newDestination = GetComponent<Person>().getBusPoint();
+        }
+        else if (GetComponent<Person>().getIsGotoCardStation())
+        {
+            //Debug.Log("GetComponent<Person>().getBusPoint(); : " + GetComponent<Person>().getBusPoint());
+            newDestination = GetComponent<Person>().getCardStationPoint();
         }
         else
         {
