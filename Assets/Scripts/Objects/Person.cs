@@ -16,6 +16,13 @@ public class Person : MonoBehaviour
 
     public float maxBusDistance = 7f;
 
+    static List<GameObject> inBusPersons = new List<GameObject>();
+
+    public static List<GameObject> getInBusPersons()
+    {
+        return inBusPersons;
+    }
+
     private void Awake()
     {
         
@@ -74,12 +81,14 @@ public class Person : MonoBehaviour
         }
         else if (other.tag == "Player" && isGotoBusStation == true)
         {
-            Debug.Log("Vector3.Distance(other.transform.position, transform.position): " + Vector3.Distance(other.transform.position, transform.position) );
-            if (other.GetComponent<Rigidbody>().velocity == Vector3.zero && Vector3.Distance(other.transform.position, transform.position) < maxBusDistance)
+           if (other.GetComponent<Rigidbody>().velocity == Vector3.zero && Vector3.Distance(other.transform.position, transform.position) < maxBusDistance)
             {
+                //Debug.Log("Vector3.Distance(other.transform.position, transform.position): " + Vector3.Distance(other.transform.position, transform.position));
+
                 //otobüs geldi ve otobüse biniyor!!!
                 isEmptyCard = true;
                 isGotoBusStation = false;
+                inBusPersons.Add(gameObject);
                 gameObject.SetActive(false);
             }
         }

@@ -2956,6 +2956,8 @@ GameObject:
   - component: {fileID: 1931669324664165798}
   - component: {fileID: 7378053247851918589}
   - component: {fileID: 248877940312326727}
+  - component: {fileID: 1405621233}
+  - component: {fileID: 4528260927529852466}
   m_Layer: 0
   m_Name: CarMesh
   m_TagString: Untagged
@@ -3023,6 +3025,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1405621233
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620041482622715814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7, y: 2.13402, z: 3.8062835}
+  m_Center: {x: 0, y: 1.0880855, z: 0.85313785}
+--- !u!114 &4528260927529852466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620041482622715814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bafb5326f147454ab830297abf08dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5645927326159208449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4250,7 +4277,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7921478651826303259}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 36.248497, y: 0.1961312, z: 82.68439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4315,7 +4342,7 @@ MonoBehaviour:
   rearTransformR: {fileID: 7016852451836098061}
   maxSteerAngle: 30
   motor: 200
-  brakePower: 150000
+  brakePower: 0.25
 --- !u!1 &7961382631918923845
 GameObject:
   m_ObjectHideFlags: 0
