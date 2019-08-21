@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb06aeaf27c6c244f917181cb9f6c708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Kentkart: {fileID: 3680702334449528121, guid: e36af94ff1a659c458ab15b982009d79,
+    type: 3}
   fillTime: 5
   isEmptyCard: 1
   isGotoBusStation: 0

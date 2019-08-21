@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Person : MonoBehaviour
 {
+    public GameObject Kentkart;
     public float fillTime = 5f; //5 saniye doldurmayı bekler
 
     public bool isEmptyCard = true; //her insanın kentkartı başta boş
@@ -13,6 +14,8 @@ public class Person : MonoBehaviour
 
     private Vector3 busPoint;
     private Vector3 cardStationPoint;
+
+    private GameObject card;
 
     public float maxBusDistance = 7f;
 
@@ -31,13 +34,21 @@ public class Person : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        card = (GameObject)Instantiate(Kentkart, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        card.transform.parent = gameObject.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (isEmptyCard == false) //kart doluysa
+        {
+            card.SetActive(false); //kentkart resmini gösterme
+        }
+        else if (!card.activeSelf)
+        {
+            card.SetActive(true);
+        }
     }
 
     private void OnEnable() //Otobüsten inerkennn
