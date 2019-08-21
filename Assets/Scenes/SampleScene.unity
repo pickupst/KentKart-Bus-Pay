@@ -24200,7 +24200,7 @@ PrefabInstance:
         type: 3}
       propertyPath: limitsPos.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1554455616}
     - target: {fileID: 1000377178597593256, guid: 6c990b9f057389345a507c116a1d7281,
         type: 3}
       propertyPath: limitsPos.Array.data[4]
@@ -24215,7 +24215,7 @@ PrefabInstance:
         type: 3}
       propertyPath: limitsPos.Array.data[6]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 732057939}
     - target: {fileID: 1000377178597593256, guid: 6c990b9f057389345a507c116a1d7281,
         type: 3}
       propertyPath: limitsPos.Array.data[7]
@@ -24266,6 +24266,11 @@ PrefabInstance:
       propertyPath: limitsPos.Array.data[16]
       value: 
       objectReference: {fileID: 704392248}
+    - target: {fileID: 1000377178597593256, guid: 6c990b9f057389345a507c116a1d7281,
+        type: 3}
+      propertyPath: personsCount
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c990b9f057389345a507c116a1d7281, type: 3}
 --- !u!1001 &1147306861564869279
