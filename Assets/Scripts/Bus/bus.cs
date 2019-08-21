@@ -8,6 +8,8 @@ public class bus : MonoBehaviour
     public Text textPassCount;
     int passCount = 0;
 
+    bool passOutable = false; //yolcular indirilebilir mi ? 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +22,19 @@ public class bus : MonoBehaviour
         textPassCount.text = "Yolcu : " + passCount;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other) //yolcuları aldık ve artık indirilebilirler
     {
         if (other.tag == "busStation")
+        {
+            passOutable = true;
+        }
+
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "busStation" && GetComponentInParent<Rigidbody>().velocity == Vector3.zero && passOutable) //durak içinde duruyorsak ve yolcular indirilebilirse indir.
         {
             //Debug.Log("indiryolcusayısı" + Person.getInBusPersons().Count);
             foreach (GameObject person in Person.getInBusPersons())
@@ -35,14 +47,11 @@ public class bus : MonoBehaviour
 
                 Debug.Log("indiryolcu FOREACH");
             }
-
+            Debug.Log("indiryolcu FOREACH " + passOutable);
             Person.getInBusPersons().Clear();
+            passOutable = false; //artık yolcular indir yeni yolcular başka durağa inebilir
         }
-        
-    }
 
-    private void OnTriggerStay (Collider other)
-    {
         if (other.tag == "busStation") //Duraktayken yolcu sayısı güncellenir
         {
             passCount = Person.getInBusPersons().Count;

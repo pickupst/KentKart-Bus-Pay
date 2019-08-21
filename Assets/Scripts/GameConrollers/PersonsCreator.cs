@@ -11,7 +11,12 @@ public class PersonsCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(personsCreate(personsCount));
 
+    }
+
+    IEnumerator personsCreate(float personsCount)
+    {
         //Debug.Log("limitsPos: " + limitsPos.position);
         for (int i = 0; i < personsCount; i++)
         {
@@ -20,6 +25,7 @@ public class PersonsCreator : MonoBehaviour
             //float posX = Random.Range(limitsPos.position.x, 0.2);
             Vector3 RandPosition = new Vector3(limitsPos[randIndex].position.x, 0.2f, limitsPos[randIndex].position.z);
             Instantiate(persons[randPersonIndex], RandPosition, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
