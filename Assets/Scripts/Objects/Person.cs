@@ -37,6 +37,15 @@ public class Person : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    private void OnEnable() //Otobüsten inerkennn
+    {
+        if (inBusPersons.Count > 0) //ilk başta liste boşken kendini silmeye çaışmasın
+        {
+            //inBusPersons.Remove(gameObject);
+        }
         
     }
 
