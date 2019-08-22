@@ -9,6 +9,8 @@ public class carController : MonoBehaviour
     private float verticalInput;
     private float steerAngle;
 
+    public Joystick joystick;
+
     public WheelCollider frontWheelL, frontWheelR;
     public WheelCollider rearWheelL, rearWheelR;
 
@@ -28,8 +30,8 @@ public class carController : MonoBehaviour
 
     public void GetInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = -Input.GetAxis("Vertical");
+        horizontalInput = joystick.Horizontal;
+        verticalInput = -joystick.Vertical;
     }
 
     private void Steer()
@@ -64,10 +66,17 @@ public class carController : MonoBehaviour
         _transform.rotation = _quat;
     }
 
-    private void Brake()
+    public void Brake()
     {
-       frontWheelL.brakeTorque = Input.GetAxis("Jump") * motor;
-       frontWheelR.brakeTorque = Input.GetAxis("Jump") * motor;
+        Debug.Log("frenliyoruz");
+       frontWheelL.brakeTorque = motor * 2;
+       frontWheelR.brakeTorque = motor * 2;
+    }
+
+    public void NonBrake()
+    {
+      frontWheelL.brakeTorque = 0;
+      frontWheelR.brakeTorque = 0;
     }
 
     private void FixedUpdate()
@@ -75,7 +84,7 @@ public class carController : MonoBehaviour
         GetInput();
         Steer();
         Accelerate();
-        Brake();
+
         UpdateWheelPoses();
     }
 

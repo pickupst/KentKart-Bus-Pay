@@ -2960,7 +2960,7 @@ GameObject:
   - component: {fileID: 4528260927529852466}
   m_Layer: 0
   m_Name: CarMesh
-  m_TagString: Untagged
+  m_TagString: PlayerChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4333,6 +4333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409e99e9587f36442a65c519da31586c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
   frontWheelL: {fileID: 8903133737175005210}
   frontWheelR: {fileID: 6290503171079101066}
   rearWheelL: {fileID: 5811611116713149105}
