@@ -107,6 +107,7 @@ public class Person : MonoBehaviour
                 isEmptyCard = true;
                 isGotoBusStation = false;
                 inBusPersons.Add(gameObject);
+                
                 gameObject.SetActive(false);
             }
         }
