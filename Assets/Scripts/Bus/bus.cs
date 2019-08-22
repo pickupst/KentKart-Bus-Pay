@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class bus : MonoBehaviour
 {
     public Text textPassCount;
-    int passCount = 0;
 
-    bool passOutable = false; //yolcular indirilebilir mi ? 
+
+    private static int gold = 0;
+    private int passCount = 0;
+
+
+    private bool passOutable = false; //yolcular indirilebilir mi ? 
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +23,7 @@ public class bus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textPassCount.text = "Yolcu : " + passCount;
+        textPassCount.text = "Yolcu : " + passCount + " \n Para: " + gold;
     }
 
     private void OnTriggerExit(Collider other) //yolcuları aldık ve artık indirilebilirler
@@ -57,5 +61,10 @@ public class bus : MonoBehaviour
             passCount = Person.getInBusPersons().Count;
         }
 
+    }
+
+    public static void AddGold(int sumGold)
+    {
+        gold += sumGold;
     }
 }

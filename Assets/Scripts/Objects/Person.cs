@@ -7,6 +7,7 @@ public class Person : MonoBehaviour
 {
     public GameObject Kentkart;
     public float fillTime = 5f; //5 saniye doldurmayı bekler
+    public int gold = 10;
 
     public bool isEmptyCard = true; //her insanın kentkartı başta boş
     public bool isGotoBusStation = false;
@@ -107,7 +108,8 @@ public class Person : MonoBehaviour
                 isEmptyCard = true;
                 isGotoBusStation = false;
                 inBusPersons.Add(gameObject);
-                
+                bus.AddGold(gold);
+
                 gameObject.SetActive(false);
             }
         }

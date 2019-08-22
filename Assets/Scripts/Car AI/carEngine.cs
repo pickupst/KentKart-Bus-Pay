@@ -28,6 +28,8 @@ public class carEngine : MonoBehaviour
 
     private bool isSensorActive = false;
 
+    private float stopForce = -20f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -133,13 +135,15 @@ public class carEngine : MonoBehaviour
 
         RaycastHit hit;
         Vector3 sensorStartPos = transform.position + frontSensorPosition;
-
         //ön orta sensör
-        if (Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength))
+            if (Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength))
         {
             Debug.DrawLine(sensorStartPos, hit.point);
             isSensorActive = true;
-
+            if (currentSpeed < 5f && Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength / 2))
+            {
+                GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, stopForce), ForceMode.Impulse);
+            }
 
         }
         
@@ -150,6 +154,10 @@ public class carEngine : MonoBehaviour
         {
             Debug.DrawLine(sensorStartPos, hit.point);
             isSensorActive = true;
+            if (currentSpeed < 5f && Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength / 2))
+            {
+                GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, stopForce), ForceMode.Impulse);
+            }
         }
         
 
@@ -159,6 +167,10 @@ public class carEngine : MonoBehaviour
         {
             Debug.DrawLine(sensorStartPos, hit.point);
             isSensorActive = true;
+            if (currentSpeed < 5f && Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength / 2))
+            {
+                GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, stopForce), ForceMode.Impulse);
+            }
         }
         
 
@@ -168,6 +180,10 @@ public class carEngine : MonoBehaviour
         {
             Debug.DrawLine(sensorStartPos, hit.point);
             isSensorActive = true;
+            if (currentSpeed < 5f && Physics.Raycast(sensorStartPos, transform.forward, out hit, sensorLength / 2))
+            {
+                GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, stopForce), ForceMode.Impulse);
+            }
         }
         
 
@@ -179,7 +195,7 @@ public class carEngine : MonoBehaviour
             isSensorActive = true;
         }
 
-        if (isSensorActive && hit.collider != null &&(hit.collider.gameObject.tag == "car" || hit.collider.gameObject.tag == "Player"))
+        if (isSensorActive && hit.collider != null && (hit.collider.gameObject.tag == "car" || hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "PlayerChild") )
         {
             Brake();
         }

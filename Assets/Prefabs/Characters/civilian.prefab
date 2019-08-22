@@ -159,6 +159,7 @@ MonoBehaviour:
   Kentkart: {fileID: 3680702334449528121, guid: e36af94ff1a659c458ab15b982009d79,
     type: 3}
   fillTime: 5
+  gold: 20
   isEmptyCard: 1
   isGotoBusStation: 0
   isGotoCardStation: 0
