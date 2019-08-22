@@ -17,7 +17,7 @@ public class touchScript : MonoBehaviour
     void Update()
     {
 
-        for (int i = 0; i < 2; ++i)
+        for (int i = 0; i < Input.touchCount; i++)
         {
             if (Input.GetTouch(i).phase == TouchPhase.Stationary && Input.GetTouch(i).position.x > Screen.width / 2)
             {
