@@ -32,7 +32,7 @@ public class PersonNavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(" isstoped" + navAgent.isStopped);
+        //Debug.Log(" isstoped" + navAgent.isStopped);
         Patrol();
     }
 

@@ -65,4 +65,4 @@ MonoBehaviour:
   - {fileID: 8229807309441052675, guid: 154d39554ce1b4b4ebf3f5471ef681ab, type: 3}
   - {fileID: 4625458007751153078, guid: 098393ca40c2c294e94e2b5b08beaeb3, type: 3}
   - {fileID: 3834068781269428361, guid: 0cfb50d204cdc304b8f554ecc3d42664, type: 3}
-  personsCount: 100
+  personsCount: 50

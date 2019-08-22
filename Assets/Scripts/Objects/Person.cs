@@ -82,22 +82,20 @@ public class Person : MonoBehaviour
         if (other.tag == "cardPoint" && isEmptyCard == true)
         {
             cardStationPoint = other.transform.position;
-            Debug.Log(other.transform.position);
+            //Debug.Log(other.transform.position);
             isGotoCardStation = true;
             if (Vector3.Distance(other.transform.position, transform.position) < 3f)
             {
-                Debug.Log("KART DOLUYOR");
+                //Debug.Log("KART DOLUYOR");
                 StartCoroutine(FillCard());
                 isGotoCardStation = false;
             }
 
         }
-        else if (other.tag == "busStation" && isGotoBusStation == false && isEmptyCard == false)
+        else if (other.tag == "busStation" && isGotoBusStation == false && isEmptyCard == false && !other.GetComponent<busStation>().IsFull())
         {
             busPoint = other.transform.position;
-            isGotoBusStation = true;
-
-            
+            isGotoBusStation = true;   
         }
         else if (other.tag == "Player" && isGotoBusStation == true)
         {
